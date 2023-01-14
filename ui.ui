@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>931</width>
+    <height>698</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Venus Tool++</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon/icon-diaglog.png</normaloff>icon/icon-diaglog.png</iconset>
+  </property>
+  <widget class="QTreeWidget" name="twListAcc">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>80</y>
+     <width>891</width>
+     <height>471</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Sunken</enum>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="autoScroll">
+    <bool>true</bool>
+   </property>
+   <property name="columnCount">
+    <number>8</number>
+   </property>
+   <column>
+    <property name="text">
+     <string>STT</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>UID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>PASS</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>2FA</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Pass 2FA</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Cookies</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Token</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Status</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="pbImport">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>50</y>
+     <width>101</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Nhập Acc</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>580</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Nội dung</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txtContents">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>600</y>
+     <width>221</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:19px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Consolas,Courier New,monospace'; font-size:10pt; color:#a31515;&quot;&gt;You traveled within the last 60 days&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>560</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Link 415</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pbSend">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>640</y>
+     <width>75</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Bắt Đầu</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Luồng chạy</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinDelay">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>10</y>
+     <width>51</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>5</number>
+   </property>
+   <property name="value">
+    <number>5</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>10</y>
+     <width>41</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delay</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lePath">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>321</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>C:\Users\trong\Desktop\acc.txt</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pbSelectFile">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>50</y>
+     <width>31</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>...</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinThread">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>10</y>
+     <width>51</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>20</number>
+   </property>
+   <property name="value">
+    <number>20</number>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
