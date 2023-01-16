@@ -1,4 +1,5 @@
 import sys
+import requests
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -33,22 +34,49 @@ class MainWindow(QMainWindow):
 
     def start_worker_1(self):
         self.uic.tabWidget.setCurrentIndex(0)
-        table = self.table
-        txtContent = self.uic.txtContents
         self.thread[0] = Worker_1(self)
         self.thread[0].start()
         self.thread[0].signal.connect(self.login_progress)
     
     def start_worker_2(self):
-        if self.uic.leUserFB.text() == '':
-            self.msg('Vui lòng nhập acc chính!')
+        ck = self.uic.txtCookie.toPlainText()
+        if ck == '':
+            self.msg('Vui lòng nhập cookies Via Share')
             return
+        self.ssViaShare = self.check_Cookies(ck)
+        if self.ssViaShare is None:
+            self.msg('Cookies này không còn hiệu lực!')
+            return
+        c = self.ssViaShare.get('https://mbasic.facebook.com/100088275142656').text
+        print(c)
         self.uic.tabWidget.setCurrentIndex(0)
         table = self.table
         txtContent = self.uic.txtContents
         self.thread[1] = Worker_2(self)
         self.thread[1].start()
         self.thread[1].signal.connect(self.login_progress)
+    def check_Cookies(self, ck):
+        ssViaShare = requests.Session()
+        headers = {
+            'authority': 'm.facebook.com',
+            'accept': '*/*',
+            'accept-language': 'vi,en;q=0.9,vi-VN;q=0.8,fr-FR;q=0.7,fr;q=0.6,en-US;q=0.5',
+            'cookie': ck,
+            'origin': 'https://m.facebook.com',
+            'referer': 'https://www.facebook.com',
+            'sec-ch-ua': '"Chromium";v="104", " Not A;Brand";v="99", "Google Chrome";v="104"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"Windows"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-origin',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
+        }
+        ssViaShare.headers = headers
+        res = ssViaShare.get('https://mbasic.facebook.com/policies/').text
+        flag_logined = res.find('id="mbasic_logout_button"')
+        if flag_logined>0:
+            return ssViaShare
         
     def getStatusProgress(self, num):
         switcher = {
@@ -129,7 +157,12 @@ class Worker_2(QThread):
         work.table = self.table
         work.txtContent = self.uic.txtContents
         work.thread_count = self.uic.spinThread.value()
-        work.user_id = self.uic.leUserFB.text()
+        user_id = self.uic.txtCookie.toPlainText()
+        start = user_id.find('c_user') + 7
+        end = user_id.find(';', start + 1)
+        work.user_id = user_id[start:end]
+        work.ssViaShare = self.ssViaShare
+
     def run(work):
         root = work.table.invisibleRootItem()
         child_count = root.childCount()
@@ -159,7 +192,7 @@ class Worker_2(QThread):
                 session = thread_list[r2].join()
                 thread = ThreadWithReturnValue(target=AddFriead.main, args=(work, r2, session))
                 thread_list_2.append(thread)
-                if session != 'ERR':
+                if session is not None:
                     thread_list_2[r2].start()
                 r2+=1
             #for n in range(0,thread_value):
@@ -208,11 +241,10 @@ class Worker_1(QThread):
                 session = thread_list[r2].join()
                 thread = ThreadWithReturnValue(target=Help415.main, args=(work, r2, session))
                 thread_list_2.append(thread)
-                thread_list_2[r2].start()
+                if session is not None:
+                    thread_list_2[r2].start()
                 r2+=1
-            for n in range(0,thread_value):
-                thread_list_2[r3].join()
-                r3+=1
+
             temple_child_count-=thread_value
         work.signal.emit({'stt': r, 'progress': 200})
 
@@ -225,3 +257,5 @@ if __name__ == "__main__":
     main_win = MainWindow()
     main_win.show()
     sys.exit(app.exec())
+
+

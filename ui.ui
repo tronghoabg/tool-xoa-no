@@ -100,7 +100,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_1">
     <attribute name="title">
@@ -195,7 +195,7 @@
       </rect>
      </property>
      <property name="title">
-      <string>Kết bạn</string>
+      <string>Kết bạn và share TKCN</string>
      </property>
      <property name="flat">
       <bool>false</bool>
@@ -203,27 +203,11 @@
      <property name="checkable">
       <bool>false</bool>
      </property>
-     <widget class="QLineEdit" name="leUserFB">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>60</y>
-        <width>171</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pbAddFriead">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>130</y>
+        <x>160</x>
+        <y>140</y>
         <width>61</width>
         <height>21</height>
        </rect>
@@ -236,16 +220,29 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>40</y>
+        <y>20</y>
         <width>101</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Id user facebook</string>
+       <string>Cookie Via Share</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="txtCookie">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>201</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="plainText">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -277,7 +274,7 @@
      <widget class="QPushButton" name="pbSend">
       <property name="geometry">
        <rect>
-        <x>140</x>
+        <x>160</x>
         <y>140</y>
         <width>75</width>
         <height>21</height>
@@ -290,10 +287,10 @@
      <widget class="QPlainTextEdit" name="txtContents">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>50</y>
-        <width>201</width>
-        <height>81</height>
+        <x>20</x>
+        <y>40</y>
+        <width>211</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="plainText">

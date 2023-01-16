@@ -4,7 +4,22 @@ def start(work, r, acc, password, twoFa):
     content = work.txtContent.toPlainText()
     work.signal.emit({'stt': r, 'progress': 1})
     session = requests.Session()
-    res = session.get('https://mbasic.facebook.com', ).text
+    headers = {
+            'authority': 'm.facebook.com',
+            'accept': '*/*',
+            'accept-language': 'vi,en;q=0.9,vi-VN;q=0.8,fr-FR;q=0.7,fr;q=0.6,en-US;q=0.5',
+            'origin': 'https://m.facebook.com',
+            'referer': 'https://www.facebook.com',
+            'sec-ch-ua': '"Chromium";v="104", " Not A;Brand";v="99", "Google Chrome";v="104"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"Windows"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-origin',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
+        }
+    session.headers = headers
+    res = session.get('https://mbasic.facebook.com').text
     lsd = res[int(res.find('name="lsd"')) + 18 : int(res.find('name="lsd"')) + 29]
     payload = {
         'email': acc,
@@ -16,7 +31,6 @@ def start(work, r, acc, password, twoFa):
         fb_dtsg = res.split('name="fb_dtsg" value="')[1].split('"')[0]
     except:
         work.signal.emit({'stt': r, 'progress': 14})
-        return 'ERR'
         return
     jazoest = res.split('name="jazoest" value="')[1].split('"')[0]
     nh = res.split('nh" value="')[1].split('"')[0]
@@ -95,8 +109,6 @@ def start(work, r, acc, password, twoFa):
     if flag_logined>0:
         work.signal.emit({'stt': r, 'progress': 6})
         return session
-    else:
-        work.signal.emit({'stt': r, 'progress': 7})
-        return  "ERR"
-
+    work.signal.emit({'stt': r, 'progress': 7})
+    return
 
