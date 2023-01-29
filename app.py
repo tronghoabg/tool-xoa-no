@@ -47,8 +47,8 @@ class MainWindow(QMainWindow):
         if self.ssViaShare is None:
             self.msg('Cookies này không còn hiệu lực!')
             return
-        c = self.ssViaShare.get('https://mbasic.facebook.com/100088275142656').text
-        print(c)
+        #c = self.ssViaShare.get('https://mbasic.facebook.com/100088275142656').text
+        #print(c)
         self.uic.tabWidget.setCurrentIndex(0)
         table = self.table
         txtContent = self.uic.txtContents

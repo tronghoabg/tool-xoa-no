@@ -12,7 +12,8 @@ def main(work, r, session):
         link = url + '/a/friends' + link
         link = link.replace('amp;', '')
         id_me = res.split('lst=')[1].split('%')[0]
-        #res = session.get(link).text
+        res = session.get(link).text
+        print(res)
         work.signal.emit({'stt': r, 'progress': 17})
         x = appcept_friend(work.ssViaShare, id_me)
         return
